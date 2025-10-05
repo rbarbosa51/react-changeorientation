@@ -1,6 +1,8 @@
-import { useState, useEffect, Activity } from "react"
+import { useState, Activity } from "react"
 import { Link } from "react-router-dom";
-import {orientationType} from '../utils'
+import useOrientation from '@/hooks/useOrientation'
+
+
 function Home({children, ...props}){
   return (
     <div {...props} >
@@ -12,20 +14,10 @@ function Home({children, ...props}){
 }
 
 export default function HomePage(){
-  const [isPortrait, setIsPortrait] = useState(orientationType(screen.orientation.type))
+  const [isPortrait] = useOrientation()
   const [activitySet, setActivitySet] = useState(true)
   
-  useEffect(() => {
-    const handleChange = () => {
-      setIsPortrait(orientationType(screen.orientation.type))
-    }
-    window.addEventListener('resize', handleChange)
-    window.addEventListener('orientationchange', handleChange)
-    return () => {
-      window.removeEventListener('resize', handleChange)
-      window.removeEventListener('orientationchange', handleChange)
-    }
-  }, [])
+  
   return (
     <div className={`bg-purple-200 flex ${isPortrait ? 'h-dvh flex-col' : 'h-dvh flex-row'}`}>
       <h1 className="text-center flex justify-center items-center text-4xl flex-2">{isPortrait ? "Portrait" : "Landscape"}</h1>
@@ -35,7 +27,7 @@ export default function HomePage(){
           <Link to={'r3f'} className="underline">Next Page</Link>
         </Home>
       </Activity>
-      <button className="border rounded-md flex-1" onClick={() => setActivitySet(prev => !prev)}>Change</button>
+      <button className="border font-bold underline rounded-md flex-1" onClick={() => setActivitySet(prev => !prev)}>Change</button>
     </div>
   )
 }

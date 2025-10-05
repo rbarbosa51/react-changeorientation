@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {HomePage,R3FPage} from './pages'
+import {HomePage,R3FPage} from '@/pages'
 
 export default function App(){
   return (
