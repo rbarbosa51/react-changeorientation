@@ -19,7 +19,7 @@ export default function HomePage(){
   
   
   return (
-    <div className={`bg-purple-200 flex ${isPortrait ? 'h-dvh flex-col' : 'h-dvh flex-row'}`}>
+    <div className={`bg-purple-200 flex w-screen ${isPortrait ? 'h-dvh flex-col' : 'h-dvh flex-row'}`}>
       <h1 className="text-center flex justify-center items-center text-4xl flex-2">{isPortrait ? "Portrait" : "Landscape"}</h1>
       <Activity mode={activitySet ? "visible" : 'hidden'}>
         <Home className=" bg-purple-500 flex-7 flex justify-center items-center"  >

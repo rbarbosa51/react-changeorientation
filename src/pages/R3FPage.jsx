@@ -5,7 +5,7 @@ import useOrientation from "@/hooks/useOrientation"
 export default function R3FPage(){
     const [isPortrait] = useOrientation()
     return (
-        <div className="h-dvh" >
+        <div className="h-dvh w-dvw" >
             <Canvas >
                 <color attach="background" args={['lightblue']} />
                 <OrbitControls />
@@ -14,7 +14,7 @@ export default function R3FPage(){
                     <meshNormalMaterial />
                 </mesh>
             </Canvas>
-            <Loader />
+            <Loader containerStyles={{backgroundColor: '#000', color: '#fff'}} />
         </div>
     )
 }
